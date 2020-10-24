@@ -1,4 +1,3 @@
-
 // SELECT ELEMENTS
 const iconElement = document.querySelector(".weather-icon");
 const tempElement = document.querySelector(".temperature-value p");
@@ -9,9 +8,7 @@ const notificationElement = document.querySelector(".notification");
 // App data
 const weather = {};
 
-weather.temperature = {
-    unit : "celsius"
-}
+weather.unit="celsius";
 
 // APP CONSTS AND VARS
 const KELVIN = 273;
@@ -52,7 +49,7 @@ function getWeather(latitude, longitude){
         })
         .then(function(data){
             console.log(data);
-            weather.temperature.value = Math.floor(data.main.temp - KELVIN);
+            weather.temperature = Math.floor(data.main.temp - KELVIN);
             weather.description = data.weather[0].description;
             weather.iconId = data.weather[0].icon;
             weather.city = data.name;
@@ -66,7 +63,7 @@ function getWeather(latitude, longitude){
 // DISPLAY WEATHER TO UI
 function displayWeather(){
     iconElement.innerHTML = `<img src="icons/${weather.iconId}.png"/>`;
-    tempElement.innerHTML = `${weather.temperature.value}°<span>C</span>`;
+    tempElement.innerHTML = `${weather.temperature}°<span>C</span>`;
     descElement.innerHTML = weather.description;
     locationElement.innerHTML = `${weather.city}, ${weather.country}`;
 }
@@ -78,17 +75,17 @@ function celsiusToFahrenheit(temperature){
 
 // WHEN THE USER CLICKS ON THE TEMPERATURE ELEMENET
 tempElement.addEventListener("click", function(){
-    if(weather.temperature.value === undefined) return;
+    if(weather.temperature === undefined) return;
     
-    if(weather.temperature.unit == "celsius"){
-        let fahrenheit = celsiusToFahrenheit(weather.temperature.value);
+    if(weather.unit == "celsius"){
+        let fahrenheit = celsiusToFahrenheit(weather.temperature);
         fahrenheit = Math.floor(fahrenheit);
         
         tempElement.innerHTML = `${fahrenheit}°<span>F</span>`;
-        weather.temperature.unit = "fahrenheit";
+        weather.unit = "fahrenheit";
     }else{
-        tempElement.innerHTML = `${weather.temperature.value}°<span>C</span>`;
-        weather.temperature.unit = "celsius"
+        tempElement.innerHTML = `${weather.temperature}°<span>C</span>`;
+        weather.unit = "celsius"
     }
-});
+}); 
 
