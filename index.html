@@ -1,36 +1,193 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Weather App - JavaScript</title>
-    <link rel="stylesheet" href="font/Rimouski.css">
-    <link rel="stylesheet" href="style.css">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css"
+        integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
+
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="./style.css">
+    <title>J&K Weather</title>
 </head>
+
 <body>
-    
+    <!-- NAVBAR START -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="./icons/01d.png" alt="" width="30" height="24" class="d-inline-block align-top">
+                J&K Weather
+            </a>
+            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control mr-2" type="search" placeholder="Search City" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <!-- END NAVBAR -->
+
     <div class="container">
-        <div class="app-title">
-            <p>Weather</p>
+        <!-- START NAV -->
+        <!-- <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                    aria-selected="true">Today</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                    aria-controls="profile" aria-selected="false">Hourly</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+                    aria-controls="contact" aria-selected="false">7-day</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"> this is the
+                data of
+                today</div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"> hourly data</div>
+            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"> 7 - day data </div>
+        </div> -->
+        <!-- END NAV -->
+
+        <!-- CURRENT DATA OF CITY -->
+
+        <div class="row justify-content-center mt-2" >
+
+            <div class="col-md-5" style="background-color: skyblue;">
+                <div class="card-body">
+                    <h4 class="card-title">Srinagar, J&K</h4>
+                    <p class="card-text">as of 12:30 IST</p>
+                    <h2>13 °C</h2>
+                    <p>Clear</p>
+                    <p>5% chances of rain until 12:55</p>
+                </div>
+            </div>
+            <div class="col-md-3" style="background-color: skyblue;">
+                <img class=" img-fluid" src="./icons/01d.png" alt="Card image" />
+            </div>
         </div>
-        <div class="notification"> </div>
-        <div class="weather-container">
-            <div class="weather-icon">
-                <img src="icons/unknown.png" alt="">
+
+        <!-- DEATAILED DATA OF CURRENT LOCATION -->
+
+        <div class="row justify-content-center mt-2">
+            <h3 class="text-center">Detailed Weather</h3>
+            <div class="col-md-4" style="background-color: skyblue;">
+                <table class="table">
+                    <tbody>
+                      <tr>
+                        <th scope="row">Himidity</th>
+                        <td>3%</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Wind</th>
+                        <td>6 m/s</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Pressure</th>
+                        <td>7 hPa</td>
+                      </tr>
+                    </tbody>
+                  </table>
+           
+
+
             </div>
-            <div class="temperature-value">
-                <p>- °<span>C</span></p>
-            </div>
-            <div class="temperature-description">
-                <p> - </p>
-            </div>
-            <div class="location">
-                <p>-</p>
+            <div class="col-md-4" style="background-color: skyblue;">
+                <table class="table">
+                    <tbody>
+                      <tr>
+                        <th scope="row">Himidity</th>
+                        <td>3%</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Wind</th>
+                        <td>6 m/s</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Pressure</th>
+                        <td>7 hPa</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
             </div>
         </div>
+        <div class="row justify-content-center">
+            <div class="col col-md-2">
+                <div class="card text-center">   
+                    <div class="card-body">
+                      <h5 class="card-title">Now</h5>
+                      <h3>9 *C</h3>
+                      <img src="./icons/02d.png" class="card-img-top img-fluid" alt="...">
+                      <p class="card-text">Pressure</p>
+                    </div>
+                  </div>
+            </div>
+            <div class="col col-md-2">
+                <div class="card text-center">   
+                    <div class="card-body">
+                      <h5 class="card-title">Now</h5>
+                      <h3>9 *C</h3>
+                      <img src="./icons/02d.png" class="card-img-top img-fluid" alt="...">
+                      <p class="card-text">Pressure</p>
+                    </div>
+                  </div>
+            </div>
+            <div class="col col-md-2">
+                <div class="card text-center">   
+                    <div class="card-body">
+                      <h5 class="card-title">Now</h5>
+                      <h3>9 *C</h3>
+                      <img src="./icons/02d.png" class="card-img-top img-fluid" alt="...">
+                      <p class="card-text">Pressure</p>
+                    </div>
+                  </div>
+            </div>
+            <div class="col col-md-2">
+                <div class="card text-center">   
+                    <div class="card-body">
+                      <h5 class="card-title">Now</h5>
+                      <h3>9 *C</h3>
+                      <img src="./icons/02d.png" class="card-img-top img-fluid" alt="...">
+                      <p class="card-text">Pressure</p>
+                    </div>
+                  </div>
+                  
+            </div>
+        </div>
+        <div class="col-12 text-center">
+			<a href="#" class="btn btn-primary" target="_blank">Bootstrap Course</a>
+		</div>
+        
     </div>
-    
-    <script src="app.js"></script>
+
+
+    <!-- Option 1: Bootstrap Bundle with Popper.js -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js"
+        integrity="sha384-BOsAfwzjNJHrJ8cZidOg56tcQWfp6y72vEJ8xQ9w6Quywb24iOsW913URv1IS4GD"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
-
-

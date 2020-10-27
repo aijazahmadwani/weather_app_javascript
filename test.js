@@ -8,42 +8,26 @@ const notificationElement = document.querySelector(".notification");
 
 
 // API KEY
-const key = '4e027d2fcccd807da22c4507d2dafed5';
+//const key = '4e027d2fcccd807da22c4507d2dafed5';
 
-// CHECK IF BROWSER SUPPORTS GEOLOCATION
-if('geolocation' in navigator){
-    navigator.geolocation.getCurrentPosition(setPosition, showError);
-}else{
-    notificationElement.style.display = "block";
-    notificationElement.innerHTML = "<p>Your Browser doesn't Support Geolocation. Please update your browser to latest version.</p>";
-}
+let latitude = 34.0837;
+let longitude = 74.7974;
 
-// SET USER'S POSITION
-function setPosition(position){
-    let latitude = position.coords.latitude;
-    let longitude = position.coords.longitude;
-    
-    getWeather(latitude, longitude);
-}
+getWeather(latitude, longitude);
 
-// SHOW ERROR WHEN THERE IS AN ISSUE WITH GEOLOCATION SERVICE
-function showError(error){
-    notificationElement.style.display = "block";
-    notificationElement.innerHTML = `<p> ${error.message} </p>`;
-}
 
 // GET WEATHER FROM API PROVIDER
-function getWeather(latitude, longitude){
-    
-    let api = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${key}
-    `;
-    
+function getWeather(lat, lon) {
+    let bbox = '73,32,78,35,15';
+
+    let api = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${key}`;
+
     fetch(api)
-        .then(function(response){
+        .then(function (response) {
             let data = response.json();
             return data;
         })
-        .then(function(data){
+        .then(function (data) {
             console.log(data);
         })
 }
