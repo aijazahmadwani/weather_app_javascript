@@ -8,7 +8,7 @@ const notificationElement = document.querySelector(".notification");
 
 
 // API KEY
-//const key = '4e027d2fcccd807da22c4507d2dafed5';
+const key = '4e027d2fcccd807da22c4507d2dafed5';
 
 let latitude = 34.0837;
 let longitude = 74.7974;
@@ -20,7 +20,7 @@ getWeather(latitude, longitude);
 function getWeather(lat, lon) {
     let bbox = '73,32,78,35,15';
 
-    let api = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${key}`;
+    let api = `https://api.openweathermap.org/data/2.5/forecast/daily?q=london&cnt=16&appid=${key}`;
 
     fetch(api)
         .then(function (response) {

@@ -2,7 +2,52 @@
     padding: 0;
     margin: 0;
 }
+body{
+    background-color: #262936;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+}
 .card{
     width: 10rem;
     border: 0;
 }
+.navbar{
+    text-transform: uppercase;
+    font-weight:700;
+    font-size: .9rem;
+    letter-spacing: .1rem;
+    background-color:#1E202B;
+  }
+.navbar-brand img{
+    height:2rem;
+  }
+  .navbar-nav li{
+    padding-right:.7rem;
+  }
+  .navbar-dark .navbar-nav .nav-link{
+    color: white;
+    padding-top: .8rem;
+  }
+  .navbar-dark .navbar-nav .nav-link.active,
+  .navbar-dark .navbar-nav .nav-link:hover {
+    color: #00AFEF;
+  }
+
+  .caption h2{
+    font-size:2.3rem;
+    font-weight: 700;
+    letter-spacing: .3rem;
+    text-shadow: .1rem .1rem .8rem black; 
+    padding-bottom:1rem;
+  }
+  
+  .caption h3{
+    font-size: 2rem;
+    text-shadow: .1rem .1rem .5rem black;
+    padding-bottom: 1.6rem;
+  
+  }
+  p{
+    font-size: 1.1rem;
+  
+  }

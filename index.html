@@ -2,53 +2,52 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css"
-        integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
-
-    <!-- CUSTOM CSS -->
-    <link rel="stylesheet" href="./style.css">
-    <title>J&K Weather</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css"
+    integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
+  <!-- FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <!-- CUSTOM CSS -->
+  <link rel="stylesheet" href="./style.css">
+  <title>J&K Weather</title>
 </head>
 
 <body>
-    <!-- NAVBAR START -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="./icons/01d.png" alt="" width="30" height="24" class="d-inline-block align-top">
-                J&K Weather
-            </a>
-            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
-                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse " id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                </ul>
-                <form class="d-flex">
-                    <input class="form-control mr-2" type="search" placeholder="Search City" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
-        </div>
-    </nav>
-    <!-- END NAVBAR -->
+  <!-- NAVBAR START -->
+  <nav class="navbar navbar-expand-md navbar-dark ">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="./icons/01d.png" alt="" class="d-inline-block align-top">
+        J&K Weather
+      </a>
+      <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control mr-2" type="search" placeholder="Search City" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <!-- END NAVBAR -->
 
-    <div class="container">
-        <!-- START NAV -->
-        <!-- <ul class="nav nav-tabs" id="myTab" role="tablist">
+  <!-- START NAV -->
+  <!-- <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
                     aria-selected="true">Today</a>
@@ -69,125 +68,108 @@
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"> hourly data</div>
             <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"> 7 - day data </div>
         </div> -->
-        <!-- END NAV -->
+  <!-- END NAV -->
 
-        <!-- CURRENT DATA OF CITY -->
+  <!-- CURRENT DATA OF CITY -->
+  <div class="container">
+    <div class="text-center mt-2">
+      <div class="row justify-content-center">
+        <div class="col-md-4" style="background-color: #323544;">
+          <div class="caption card-body">
+            <h3 class="card-title">Srinagar, J&K</h3>
+            <p class="card-text">as of 12:30 IST</p>
+            <h2>13 °C</h2>
+            <p>Clear</p>
+            <p>5% chances of rain until 12:55</p>
+          </div>
+        </div>
+        <div class="col-md-2" style="background-color: #323544;"><img class=" img-fluid" src="./icons/01d.png"
+            alt="Card image" />
+          <p>17* / 19* </p>
+        </div>
+      </div>
 
-        <div class="row justify-content-center mt-2" >
 
-            <div class="col-md-5" style="background-color: skyblue;">
-                <div class="card-body">
-                    <h4 class="card-title">Srinagar, J&K</h4>
-                    <p class="card-text">as of 12:30 IST</p>
-                    <h2>13 °C</h2>
-                    <p>Clear</p>
-                    <p>5% chances of rain until 12:55</p>
-                </div>
-            </div>
-            <div class="col-md-3" style="background-color: skyblue;">
-                <img class=" img-fluid" src="./icons/01d.png" alt="Card image" />
-            </div>
+    </div>
+
+    <!-- DEATAILED DATA OF CURRENT LOCATION -->
+    <div class="row justify-content-center mt-5">
+      <h4 class="text-center">Detailed Weather of Srinagar,Jammu and Kashmir</h4>
+      <div class="col-md-4" style="background-color: #1E202B;">
+        <div class="row text-center">
+
+          <div class="col-6">
+
+            <p> <img src="./images/temperature.png" width="13" alt=""> Humidity</p>
+          </div>
+          <div class="col-6">
+            <p>34%</p>
+          </div>
+          <div class="col-6">
+            <p> <img src="./images/wind.png" class="img-fluid" width="24" alt=""> Humidity</p>
+          </div>
+          <div class="col-6">
+            <p>34%</p>
+          </div>
+          <div class="col-6">
+            <p> <img src="./images/temperature.png" width="13" alt=""> Humidity</p>
+          </div>
+          <div class="col-6">
+            <p>34%</p>
+          </div>
         </div>
 
-        <!-- DEATAILED DATA OF CURRENT LOCATION -->
-
-        <div class="row justify-content-center mt-2">
-            <h3 class="text-center">Detailed Weather</h3>
-            <div class="col-md-4" style="background-color: skyblue;">
-                <table class="table">
-                    <tbody>
-                      <tr>
-                        <th scope="row">Himidity</th>
-                        <td>3%</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Wind</th>
-                        <td>6 m/s</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Pressure</th>
-                        <td>7 hPa</td>
-                      </tr>
-                    </tbody>
-                  </table>
-           
-
-
-            </div>
-            <div class="col-md-4" style="background-color: skyblue;">
-                <table class="table">
-                    <tbody>
-                      <tr>
-                        <th scope="row">Himidity</th>
-                        <td>3%</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Wind</th>
-                        <td>6 m/s</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Pressure</th>
-                        <td>7 hPa</td>
-                      </tr>
-                    </tbody>
-                  </table>
-
-            </div>
+      </div>
+      <div class="col-md-4" style="background-color: #1E202B;">
+        <div class="row text-center">
+          <div class="col-6">
+            <p> <img src="./images/pressure.png" width="24" alt=""> Humidity</p>
+          </div>
+          <div class="col-6">
+            <p>7 m/s</p>
+          </div>
         </div>
-        <div class="row justify-content-center">
-            <div class="col col-md-2">
-                <div class="card text-center">   
-                    <div class="card-body">
-                      <h5 class="card-title">Now</h5>
-                      <h3>9 *C</h3>
-                      <img src="./icons/02d.png" class="card-img-top img-fluid" alt="...">
-                      <p class="card-text">Pressure</p>
-                    </div>
-                  </div>
-            </div>
-            <div class="col col-md-2">
-                <div class="card text-center">   
-                    <div class="card-body">
-                      <h5 class="card-title">Now</h5>
-                      <h3>9 *C</h3>
-                      <img src="./icons/02d.png" class="card-img-top img-fluid" alt="...">
-                      <p class="card-text">Pressure</p>
-                    </div>
-                  </div>
-            </div>
-            <div class="col col-md-2">
-                <div class="card text-center">   
-                    <div class="card-body">
-                      <h5 class="card-title">Now</h5>
-                      <h3>9 *C</h3>
-                      <img src="./icons/02d.png" class="card-img-top img-fluid" alt="...">
-                      <p class="card-text">Pressure</p>
-                    </div>
-                  </div>
-            </div>
-            <div class="col col-md-2">
-                <div class="card text-center">   
-                    <div class="card-body">
-                      <h5 class="card-title">Now</h5>
-                      <h3>9 *C</h3>
-                      <img src="./icons/02d.png" class="card-img-top img-fluid" alt="...">
-                      <p class="card-text">Pressure</p>
-                    </div>
-                  </div>
-                  
-            </div>
-        </div>
-        <div class="col-12 text-center">
-			<a href="#" class="btn btn-primary" target="_blank">Bootstrap Course</a>
-		</div>
-        
+      </div>
+    </div>
+    <div class="row justify-content-center text-center mt-5">
+      <h3 class="text-center">Hourly Forecast</h3>
+      <div class="col col-md-2" style="background-color: #323544;">
+        <h5 class="card-title">Now</h5>
+        <h3>9 *C</h3>
+        <img src="./icons/02d.png" class="img-fluid" alt="...">
+        <p class="card-text">Pressure</p>
+      </div>
+      <div class="col col-md-2" style="background-color: #2D303D;">
+        <h5 class="card-title">12;00</h5>
+        <h3>9 *C</h3>
+        <img src="./icons/02d.png" class="img-fluid" alt="...">
+        <p class="card-text">Pressure</p>
+
+      </div>
+      <div class="col col-md-2" style="background-color: #323544;">
+        <h5 class="card-title">13:00</h5>
+        <h3>9 *C</h3>
+        <img src="./icons/02d.png" class="img-fluid" alt="...">
+        <p class="card-text">Pressure</p>
+      </div>
+      <div class="col col-md-2" style="background-color: #2D303D;">
+        <h5 class="card-title">14:00</h5>
+        <h3>9 *C</h3>
+        <img src="./icons/02d.png" class="img-fluid" alt="...">
+        <p class="card-text">Pressure</p>
+      </div>
+    </div>
+    <div class="col-12 text-center mt-2">
+      <a href="#" class="btn btn-primary" target="_blank">Bootstrap Course</a>
     </div>
 
 
-    <!-- Option 1: Bootstrap Bundle with Popper.js -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js"
-        integrity="sha384-BOsAfwzjNJHrJ8cZidOg56tcQWfp6y72vEJ8xQ9w6Quywb24iOsW913URv1IS4GD"
-        crossorigin="anonymous"></script>
+  </div>
+
+  <!-- Option 1: Bootstrap Bundle with Popper.js -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js"
+    integrity="sha384-BOsAfwzjNJHrJ8cZidOg56tcQWfp6y72vEJ8xQ9w6Quywb24iOsW913URv1IS4GD"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>
