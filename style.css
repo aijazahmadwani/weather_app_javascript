@@ -9,7 +9,7 @@ body{
 }
 .card{
     width: 10rem;
-    border: 0;
+    /* border: 0; */
 }
 .navbar{
     text-transform: uppercase;
@@ -44,10 +44,11 @@ body{
   .caption h3{
     font-size: 2rem;
     text-shadow: .1rem .1rem .5rem black;
-    padding-bottom: 1.6rem;
+    padding-bottom: .5rem;
   
   }
   p{
     font-size: 1.1rem;
   
   }
+  

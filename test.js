@@ -18,9 +18,8 @@ getWeather(latitude, longitude);
 
 // GET WEATHER FROM API PROVIDER
 function getWeather(lat, lon) {
-    let bbox = '73,32,78,35,15';
 
-    let api = `https://api.openweathermap.org/data/2.5/forecast/daily?q=london&cnt=16&appid=${key}`;
+    let api = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${key}`;
 
     fetch(api)
         .then(function (response) {
@@ -29,6 +28,7 @@ function getWeather(lat, lon) {
         })
         .then(function (data) {
             console.log(data);
+            console.log(data.current.dt);
         })
 }
 
