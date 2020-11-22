@@ -40,12 +40,12 @@ function showError(error) {
 
 // GET WEATHER FROM API PROVIDER
 function getWeather(lat, lon) {
-    //  let currentApi = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`;
+      let currentApi = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`;
     // console.log(currentApi);
     // let detailApi = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude={current,minutely}&appid=${key}`;
     // console.log(api);
     // fetch(api)
-    fetch('data/currentApi.json')
+    fetch(currentApi)
         .then((response)=> {
             return response.json();
         })
