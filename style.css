@@ -5,7 +5,7 @@
 body{
     background-color: #262936;
     color: #ffffff;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Lato', sans-serif;
 }
 .card{
     width: 10rem;
@@ -37,18 +37,25 @@ body{
     font-size:2.3rem;
     font-weight: 700;
     letter-spacing: .3rem;
-    text-shadow: .1rem .1rem .8rem black; 
     padding-bottom:1rem;
   }
   
   .caption h3{
     font-size: 2rem;
-    text-shadow: .1rem .1rem .5rem black;
     padding-bottom: .5rem;
   
   }
-  p{
-    font-size: 1.1rem;
   
-  }
-  
+  .notification{
+    background-color: #f8d7da;
+    display: none;
+}
+.notification p{
+  color: #721c24;
+  font-size: 1.2em;
+  margin: 0;
+  text-align: center;
+  padding: 10px 0;
+  text-transform: uppercase;
+  font-weight: 600;
+}

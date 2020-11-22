@@ -19,7 +19,7 @@ getWeather(latitude, longitude);
 // GET WEATHER FROM API PROVIDER
 function getWeather(lat, lon) {
 
-    let api = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${key}`;
+    let api = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&appid=${key}`;
 
     fetch(api)
         .then(function (response) {
@@ -28,7 +28,7 @@ function getWeather(lat, lon) {
         })
         .then(function (data) {
             console.log(data);
-            console.log(data.current.dt);
+    
         })
 }
 
