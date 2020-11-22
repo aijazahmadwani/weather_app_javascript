@@ -1,11 +1,22 @@
 // SELECT ELEMENTS
-const locationElement = document.querySelector(".location");
-const iconElement = document.querySelector(".weather-icon");
-const tempElement = document.querySelector(".temperature-value p");
-const descElement = document.querySelector(".temperature-description p");
 const notificationElement = document.querySelector(".notification");
-const currentTime = document.getElementById("currenttime");
-
+const locationElement = document.getElementById("location");
+const iconElement = document.getElementById("weather-icon");
+const tempElement = document.getElementById("temperature-value");
+const descElement = document.getElementById("temperature-description");
+const currentTimeElement = document.getElementById("currenttime");
+const feelsLikeElement = document.getElementById("feels-like");
+const highByLow = document.getElementById("highbylow");
+const pressureElement= document.getElementById("pressure");
+const humidityElement = document.getElementById("humidity");
+const sealevelElement = document.getElementById("sealevel");
+const groundLevelElement = document.getElementById("groundlevel");
+const visibilityElement = document.getElementById("visibility");
+const windspeedElement = document.getElementById("windspeed");
+const cloudsElement = document.getElementById("clouds");
+const sunsetElement = document.getElementById("sunset");
+const temperatureMainElement = document.getElementById("temerature-main");
+const sunriseElement = document.getElementById("sunrise");
 // App data
 const weather = {};
 
@@ -40,43 +51,37 @@ function showError(error) {
 
 // GET WEATHER FROM API PROVIDER
 function getWeather(lat, lon) {
-      let currentApi = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`;
+    //let currentApi = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`;
     // console.log(currentApi);
     // let detailApi = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude={current,minutely}&appid=${key}`;
     // console.log(api);
-    // fetch(api)
-    fetch(currentApi)
-        .then((response)=> {
+    
+    fetch('data/currentApi.json')
+        .then((response) => {
             return response.json();
         })
-        .then((data)=> {
+        .then((data) => {
             t = convertTimestamp(1606016787);
-            weather.name = data.name
-            weather.main = data.weather.main;
-            weather.description = data.weather.description;
-            weather.iconId = data.weather.icon;
+            weather.location = data.name;
+            weather.country = data.sys.country;
+            weather.main = data.weather[0].main;
+            weather.description = data.weather[0].description;
+            weather.iconId = data.weather[0].icon;
             weather.temperature = Math.floor(data.main.temp - KELVIN);
             weather.feelsLike = Math.floor(data.main.feels_like - KELVIN);
             weather.tempMin = Math.floor(data.main.temp_min - KELVIN);
-            weather.tempax = Math.floor(data.main.temp_max - KELVIN);
+            weather.tempMax = Math.floor(data.main.temp_max - KELVIN);
             weather.pressure = data.main.pressure;
             weather.humidity = data.main.humidity;
             weather.seaLevel = data.main.sea_level;
             weather.groundLevel = data.main.grnd_level;
             weather.visibility = data.visibility;
-            weather.windSpeed = data.wind_speed;
+            weather.windSpeed = data.wind.speed;
             weather.clouds = data.clouds.all;
-            weather.dateTime = data.dt;
+            weather.dateTime = convertTimestamp(data.dt);
             weather.country = data.sys.country;
             weather.sunset = data.sys.sunset;
             weather.sunrise = data.sys.sunrise;
-            
-            weather.dewPoint = data.dew_point;
-            weather.uvi = data.uvi;
-            weather.clouds = data.clouds;
-            
-            
-
         })
         .then(function () {
             displayWeather();
@@ -85,10 +90,12 @@ function getWeather(lat, lon) {
 
 // DISPLAY WEATHER TO UI
 function displayWeather() {
-    // iconElement.innerHTML = `<img src="icons/${weather.iconId}.png"/>`;
+    iconElement.src =  `./icons/${weather.iconId}.png`;
     // tempElement.innerHTML = `${weather.temperature}°<span>C</span>`;
-    // descElement.innerHTML = weather.description;
-    locationElement.innerHTML = weather.name;
+    tempElement.innerHTML = `${weather.temperature}°<span>C</span>`;
+    locationElement.innerHTML = weather.location + ', ' +  weather.country;
+    currentTimeElement.innerHTML += weather.dateTime;
+    highByLow.innerHTML = `${weather.tempMax}° / ${weather.tempMin}°`;
 
 }
 
@@ -141,7 +148,8 @@ function convertTimestamp(timestamp) {
         h = 12;
     }
 
-    time = h + ':' + min + ' ' + ampm + ',' + dd + '-' + mm + '-' + yyyy;
+    //time = h + ':' + min + ' ' + ampm + ',' + dd + '-' + mm + '-' + yyyy;
+    time = h + ':' + min + ' ' + ampm;
 
     return time;
 }
