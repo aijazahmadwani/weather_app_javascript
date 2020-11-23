@@ -19,7 +19,8 @@ const sunsetElement = document.getElementById("sunset");
 const sunriseElement = document.getElementById("sunrise");
 // App data
 const weather = {};
-
+let hourlyTemp=[];
+let hour=[];
 weather.unit = "celsius";
 
 // APP CONSTS AND VARS
@@ -51,12 +52,12 @@ function showError(error) {
 
 // GET WEATHER FROM API PROVIDER
 function getWeather(lat, lon) {
-    //let currentApi = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`;
+    let currentApi = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`;
     // console.log(currentApi);
-     //let detailApi = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&appid=${key}`;
-     //console.log(detailApi);
+     let detailApi = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&appid=${key}`;
+     
 
-    fetch('data/currentApi.json')
+    fetch(currentApi)
         .then((response) => {
             return response.json();
         })
@@ -83,23 +84,45 @@ function getWeather(lat, lon) {
         })
         .then(function () {
             displayWeather();
-            drawChart();
+            drawChart(detailApi);
         })
 }
-function drawChart(){
-    fetch('data/detailApi.json')
+function drawChart(detailApi){
+    fetch(detailApi)
     .then((response) => {
         return response.json();
     })
     .then((data)=>{
-        hour=[];
-        for(let i=0; i<48;i++){
-            hour.push(data.hourly[i].temp)
+            for(let i=0; i<48;i++){
+                
+            hourlyTemp.push(Math.floor(data.hourly[i].temp - KELVIN));
+            hour.push(convertTimestamp(data.hourly[i].dt))
+
         }
-        console.log(hour);
+        setup();
         
     })
 }
+async function setup() {
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: hour,
+        datasets: [
+          {
+            label: 'Temperature in °C',
+            data: hourlyTemp,
+            fill: false,
+            borderColor: 'rgba(255, 99, 132, 1)',
+            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            borderWidth: 1
+          }
+        ]
+      },
+      options: {}
+    });
+  }
 
 // DISPLAY WEATHER TO UI
 function displayWeather() {
