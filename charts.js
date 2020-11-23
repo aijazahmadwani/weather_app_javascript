@@ -22,17 +22,3 @@
           options: {}
         });
       }
-
-      async function getData() {
-        const response = await fetch('');
-        const data = await response.text();
-        const years = [];
-        const temps = [];
-        const rows = data.split('\n').slice(1);
-        rows.forEach(row => {
-          const cols = row.split(',');
-          years.push(cols[0]);
-          temps.push(14 + parseFloat(cols[1]));
-        });
-        return { years, temps };
-      }

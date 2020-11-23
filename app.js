@@ -51,12 +51,12 @@ function showError(error) {
 
 // GET WEATHER FROM API PROVIDER
 function getWeather(lat, lon) {
-    let currentApi = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`;
+    //let currentApi = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`;
     // console.log(currentApi);
-    // let detailApi = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude={current,minutely}&appid=${key}`;
-    // console.log(api);
+     //let detailApi = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&appid=${key}`;
+     //console.log(detailApi);
 
-    fetch(currentApi)
+    fetch('data/currentApi.json')
         .then((response) => {
             return response.json();
         })
@@ -83,7 +83,22 @@ function getWeather(lat, lon) {
         })
         .then(function () {
             displayWeather();
-        });
+            drawChart();
+        })
+}
+function drawChart(){
+    fetch('data/detailApi.json')
+    .then((response) => {
+        return response.json();
+    })
+    .then((data)=>{
+        hour=[];
+        for(let i=0; i<48;i++){
+            hour.push(data.hourly[i].temp)
+        }
+        console.log(hour);
+        
+    })
 }
 
 // DISPLAY WEATHER TO UI
@@ -99,7 +114,7 @@ function displayWeather() {
     humidityElement.innerHTML = `${weather.humidity} %`;
     sealevelElement.innerHTML = `${weather.seaLevel} hPa`;
     groundLevelElement.innerHTML = `${weather.groundLevel} hPa` ;
-    visibilityElement.innerHTML = weather.visibility;
+    visibilityElement.innerHTML = `${weather.visibility} m`;
     windspeedElement.innerHTML = `${weather.windSpeed} m/s`;
     windDirectionElement.innerHTML = `${weather.windDeg} °`;
     cloudsElement.innerHTML = `${weather.clouds} %`;
