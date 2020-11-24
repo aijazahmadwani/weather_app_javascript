@@ -117,52 +117,6 @@ function drawChart(detailApi) {
 
         })
 }
-async function setup() {
-    const ctx = document.getElementById('myChart').getContext('2d');
-    const myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: hour,
-            datasets: [
-                {
-                    label: 'Temperature in °C',
-                    data: hourlyTemp,
-                    fill: false,
-                    borderColor: 'rgba(255, 99, 132, 1)',
-                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                    borderWidth: 1,
-                    lineTension: 0.8
-
-                }
-            ]
-        },
-        options: {
-
-            responsive: true,
-            title: {
-                display: true,
-                text: '48 hour forecast'
-            },
-            scales: {
-                xAxes: [{
-                    display: true,
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Month'
-                    }
-                }],
-                yAxes: [{
-                    display: true,
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Value'
-                    }
-                }]
-            }
-        }
-    });
-}
-
 // DISPLAY WEATHER TO UI
 function displayWeather() {
     iconElement.src = `./icons/${weather.iconId}.png`;
