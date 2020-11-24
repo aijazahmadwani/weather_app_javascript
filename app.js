@@ -17,10 +17,11 @@ const windDirectionElement = document.getElementById("wind-direction");
 const cloudsElement = document.getElementById("clouds");
 const sunsetElement = document.getElementById("sunset");
 const sunriseElement = document.getElementById("sunrise");
+const hourlyDataElement = document.getElementById("hourly-data")
 // App data
 const weather = {};
-let hourlyTemp=[];
-let hour=[];
+let hourlyTemp = [];
+let hour = [];
 weather.unit = "celsius";
 
 // APP CONSTS AND VARS
@@ -54,8 +55,8 @@ function showError(error) {
 function getWeather(lat, lon) {
     let currentApi = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`;
     // console.log(currentApi);
-     let detailApi = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&appid=${key}`;
-     
+    let detailApi = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&appid=${key}`;
+
 
     fetch(currentApi)
         .then((response) => {
@@ -87,42 +88,80 @@ function getWeather(lat, lon) {
             drawChart(detailApi);
         })
 }
-function drawChart(detailApi){
+function drawChart(detailApi) {
     fetch(detailApi)
-    .then((response) => {
-        return response.json();
-    })
-    .then((data)=>{
-            for(let i=0; i<48;i++){
-                
-            hourlyTemp.push(Math.floor(data.hourly[i].temp - KELVIN));
-            hour.push(convertTimestamp(data.hourly[i].dt))
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            for (let i = 0; i < 48; i++) {
+                let color;
 
-        }
-        setup();
-        
-    })
+                // hourlyTemp.push(Math.floor(data.hourly[i].temp - KELVIN));
+                // hour.push(convertTimestamp(data.hourly[i].dt))
+                if(i%2===0){
+                    color = '#323544';
+                }
+                else{
+                    color='#2D303D';
+                }
+                hourlyDataElement.innerHTML += `<div class="col col-md-2 mt-1 mr-1" style="background-color: ${color};">
+                        <h5 class="card-title mt-2">${convertTimestamp(data.hourly[i].dt)}</h5>
+                        <h3>${Math.floor(data.hourly[i].temp - KELVIN)} °C </h3>
+                        <img src="./icons/${data.hourly[i].weather[0].icon}.png" class="img-fluid" alt="...">
+                        <p class="card-text">${data.hourly[i].weather[0].main}</p>
+                    </div>`
+
+            }
+            // setup();
+
+        })
 }
 async function setup() {
     const ctx = document.getElementById('myChart').getContext('2d');
     const myChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: hour,
-        datasets: [
-          {
-            label: 'Temperature in °C',
-            data: hourlyTemp,
-            fill: false,
-            borderColor: 'rgba(255, 99, 132, 1)',
-            backgroundColor: 'rgba(255, 99, 132, 0.5)',
-            borderWidth: 1
-          }
-        ]
-      },
-      options: {}
+        type: 'line',
+        data: {
+            labels: hour,
+            datasets: [
+                {
+                    label: 'Temperature in °C',
+                    data: hourlyTemp,
+                    fill: false,
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                    borderWidth: 1,
+                    lineTension: 0.8
+
+                }
+            ]
+        },
+        options: {
+
+            responsive: true,
+            title: {
+                display: true,
+                text: '48 hour forecast'
+            },
+            scales: {
+                xAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Month'
+                    }
+                }],
+                yAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Value'
+                    }
+                }]
+            }
+        }
     });
-  }
+}
 
 // DISPLAY WEATHER TO UI
 function displayWeather() {
@@ -136,7 +175,7 @@ function displayWeather() {
     pressureElement.innerHTML = `${weather.pressure} hPa`;
     humidityElement.innerHTML = `${weather.humidity} %`;
     sealevelElement.innerHTML = `${weather.seaLevel} hPa`;
-    groundLevelElement.innerHTML = `${weather.groundLevel} hPa` ;
+    groundLevelElement.innerHTML = `${weather.groundLevel} hPa`;
     visibilityElement.innerHTML = `${weather.visibility} m`;
     windspeedElement.innerHTML = `${weather.windSpeed} m/s`;
     windDirectionElement.innerHTML = `${weather.windDeg} °`;
