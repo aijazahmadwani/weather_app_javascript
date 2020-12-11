@@ -58,7 +58,7 @@ function getWeather(lat, lon) {
     let detailApi = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&appid=${key}`;
 
 
-    fetch(currentApi)
+    fetch('data/currentApi.json')
         .then((response) => {
             return response.json();
         })
@@ -85,18 +85,19 @@ function getWeather(lat, lon) {
         })
         .then(function () {
             displayWeather();
-            drawChart(detailApi);
+            hourlyData(detailApi);
         })
 }
-function drawChart(detailApi) {
-    fetch(detailApi)
+function hourlyData(detailApi) {
+    fetch('data/detailApi.json')
         .then((response) => {
             return response.json();
         })
         .then((data) => {
-            for (let i = 0; i < 48; i++) {
+            console.log(data);
+            localStorage.setItem("hourlyData",JSON.stringify(data));               
+            for (let i = 0; i < 4; i++) {
                 let color;
-
                 // hourlyTemp.push(Math.floor(data.hourly[i].temp - KELVIN));
                 // hour.push(convertTimestamp(data.hourly[i].dt))
                 if(i%2===0){
