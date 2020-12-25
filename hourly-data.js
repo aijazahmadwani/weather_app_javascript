@@ -1,35 +1,17 @@
 const hourlyDataElement = document.getElementById("hourly-data");
-let data =[];
+let data = [];
+const KELVIN = 273;
 data = JSON.parse(localStorage.getItem("hourlyData"));
-console.log(data);
 
-// console.log(data.values())
-// for(a in data){
-//     console.log(Object.keys(a));
-// }
-
-// for (let i = 0; i < 4; i++) {
-//     let color;
-//     // hourlyTemp.push(Math.floor(data.hourly[i].temp - KELVIN));
-//     // hour.push(convertTimestamp(data.hourly[i].dt))
-//     if(i%2===0){
-//         color = '#323544';
-//     }
-//     else{
-//         color='#2D303D';
-//     }
-//     hourlyDataElement.innerHTML += `<div class="col col-md-2 mt-1 mr-1" style="background-color: ${color};">
-//             <h5 class="card-title mt-2">${convertTimestamp(data.hourly[i].dt)}</h5>
-//             <h3>${Math.floor(data.hourly[i].temp - KELVIN)} °C </h3>
-//             <img src="./icons/${data.hourly[i].weather[0].icon}.png" class="img-fluid" alt="...">
-//             <p class="card-text">${data.hourly[i].weather[0].main}</p>
-//         </div>`
-
-// }
-
-
-
-
+for (let i = 0; i < 48; i++) {
+    hourlyDataElement.innerHTML += `
+    <tr>
+        <th scope="row">${convertTimestamp(data.hourly[i].dt)}</th>
+        <td>${Math.floor(data.hourly[i].temp - KELVIN)} °C </td>
+        <td><img src="./icons/${data.hourly[i].weather[0].icon}.png" width="32px"alt="..."> </img></td>
+        <td>${data.hourly[i].weather[0].main}</td>
+    </tr>`
+}
 
 //function to convert unix timestamp to local time and date
 function convertTimestamp(timestamp) {
