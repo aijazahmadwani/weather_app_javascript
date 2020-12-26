@@ -17,7 +17,8 @@ const windDirectionElement = document.getElementById("wind-direction");
 const cloudsElement = document.getElementById("clouds");
 const sunsetElement = document.getElementById("sunset");
 const sunriseElement = document.getElementById("sunrise");
-const hourlyDataElement = document.getElementById("hourly-data")
+const hourlyDataElement = document.getElementById("hourly-data");
+const weekDataElement = document.getElementById("week-data");
 // App data
 const weather = {};
 let hourlyTemp = [];
@@ -48,7 +49,7 @@ function setPosition(position) {
 // SHOW ERROR WHEN THERE IS AN ISSUE WITH GEOLOCATION SERVICE
 function showError(error) {
     notificationElement.style.display = "block";
-    notificationElement.innerHTML = `<p> ${error.message} </p>`;
+    notificationElement.innerHTML = `<p> How can i detect your location</p>`;
 }
 
 // GET WEATHER FROM API PROVIDER
@@ -64,7 +65,7 @@ function getWeather(lat, lon) {
         .then((data) => {
             weather.location = data.name;
             weather.country = data.sys.country;
-            weather.weatherMain = data.weather[0].main;
+            weather.weatherMain = data.weather[0].description;
             weather.iconId = data.weather[0].icon;
             weather.temperature = Math.floor(data.main.temp - KELVIN);
             weather.feelsLike = Math.floor(data.main.feels_like - KELVIN);
@@ -92,6 +93,7 @@ function hourlyData(detailApi) {
             return response.json();
         })
         .then((data) => {
+            console.log(data);
             localStorage.setItem("hourlyData",JSON.stringify(data));               
             for (let i = 0; i < 4; i++) {
                 let color;
@@ -106,12 +108,29 @@ function hourlyData(detailApi) {
                 hourlyDataElement.innerHTML += `<div class="col col-md-2 mt-1 mr-1" style="background-color: ${color};">
                         <h5 class="card-title mt-2">${convertTimestamp(data.hourly[i].dt)}</h5>
                         <h3>${Math.floor(data.hourly[i].temp - KELVIN)} °C </h3>
-                        <img src="./assets/animated_icons/${data.hourly[i].weather[0].icon}.svg" class="img-fluid" alt="...">
-                        <p class="card-text">${data.hourly[i].weather[0].main}</p>
+                        <img src="./assets/animated_icons/${data.hourly[i].weather[0].icon}.svg" width="50%" class="img-fluid" alt="...">
+                        <p class="card-text">${data.hourly[i].weather[0].description}</p>
                     </div>`
 
             }
-            // setup();
+            for (let i = 0; i < 7; i++) {
+                let color;
+                // hourlyTemp.push(Math.floor(data.hourly[i].temp - KELVIN));
+                // hour.push(convertTimestamp(data.hourly[i].dt))
+                if(i%2===0){
+                    color = '#323544';
+                }
+                else{
+                    color='#2D303D';
+                }
+                weekDataElement.innerHTML += `<div class="col col-md-1 mt-1 mr-1" style="background-color: ${color};">
+                        <p class="card-title mt-2">${convertToDate(data.daily[i].dt)}</p>
+                        <h3>${Math.floor(data.daily[i].temp.day - KELVIN)} °C / ${Math.floor(data.daily[i].temp.night - KELVIN)} °C</h3>
+                        <img src="./assets/animated_icons/${data.daily[i].weather[0].icon}.svg" width="50%" class="img-fluid" alt="...">
+                        <p class="card-text">${data.daily[i].weather[0].description}</p>
+                    </div>`
+
+            }
 
         })
 }
@@ -190,4 +209,31 @@ function convertTimestamp(timestamp) {
     time = h + ':' + min + ' ' + ampm;
 
     return time;
+}
+//function to convert unix timestamp to local time and date
+function convertToDate(timestamp) {
+    var d = new Date(timestamp * 1000), // Convert the passed timestamp to milliseconds
+        yyyy = d.getFullYear(),
+        mm = ('0' + (d.getMonth() + 1)).slice(-2),  // Months are zero based. Add leading 0.
+        dd = ('0' + d.getDate()).slice(-2),         // Add leading 0.
+        hh = d.getHours(),
+        h = hh,
+        min = ('0' + d.getMinutes()).slice(-2),     // Add leading 0.
+        ampm = 'AM',
+        time;
+
+    if (hh > 12) {
+        h = hh - 12;
+        ampm = 'PM';
+    } else if (hh === 12) {
+        h = 12;
+        ampm = 'PM';
+    } else if (hh == 0) {
+        h = 12;
+    }
+
+    //time = h + ':' + min + ' ' + ampm + ',' + dd + '-' + mm + '-' + yyyy;
+    date = dd + '-' + mm;
+
+    return date;
 }

@@ -44,7 +44,10 @@ body{
     padding-bottom: .5rem;
   
   }
-  
+  .narrow{
+    width:80%;
+    margin: 1.5rem auto;
+  }
   .notification{
     background-color: #f8d7da;
     display: none;
