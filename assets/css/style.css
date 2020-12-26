@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
 *{
     padding: 0;
     margin: 0;
@@ -9,7 +10,6 @@ body{
 }
 .card{
     width: 10rem;
-    /* border: 0; */
 }
 .navbar{
     text-transform: uppercase;
@@ -37,7 +37,6 @@ body{
     font-size:2.3rem;
     font-weight: 700;
     letter-spacing: .3rem;
-    padding-bottom:1rem;
   }
   
   .caption h3{
@@ -59,18 +58,16 @@ body{
   text-transform: uppercase;
   font-weight: 600;
 }
-.chart{
-  width: 80%;
-  height: 70vh;
-  min-height: 500px;
-
-  margin: 0 auto;
-
+.hours{
+  text-decoration: none;
 }
 
 /* media queries */
 @media (max-width: 767px){
-*{
+.row{
   text-align: center;
+}
+#weather-icon{
+  width: 5.5rem;
 }
 }

@@ -4,7 +4,6 @@ const locationElement = document.getElementById("location");
 const districtElement = document.getElementById("district");
 const iconElement = document.getElementById("weather-icon");
 const mainTempElement = document.getElementById("main-temperature");
-const weatherDescElement = document.getElementById("weather-description");
 const weatherMainElement = document.getElementById("weather-main");
 const currentTimeElement = document.getElementById("currenttime");
 const feelsLikeElement = document.getElementById("feels-like");
@@ -66,7 +65,6 @@ function getWeather(lat, lon) {
             weather.location = data.name;
             weather.country = data.sys.country;
             weather.weatherMain = data.weather[0].main;
-            weather.weatherDescription = data.weather[0].description;
             weather.iconId = data.weather[0].icon;
             weather.temperature = Math.floor(data.main.temp - KELVIN);
             weather.feelsLike = Math.floor(data.main.feels_like - KELVIN);
@@ -124,8 +122,7 @@ function displayWeather() {
     mainTempElement.innerHTML = `${weather.temperature}°<span>C</span>`;
     locationElement.innerHTML = weather.location + ', ' + weather.country;
     currentTimeElement.innerHTML += weather.dateTime;
-    feelsLikeElement.innerHTML = `Feels like ${weather.feelsLike}°<span>C</span>`;
-    weatherDescElement.innerHTML = weather.weatherDescription;
+    feelsLikeElement.innerHTML = `${weather.feelsLike}°<span>C</span>`;
     weatherMainElement.innerHTML = weather.weatherMain;
     pressureElement.innerHTML = `${weather.pressure} hPa`;
     humidityElement.innerHTML = `${weather.humidity} %`;
