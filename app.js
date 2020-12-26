@@ -58,7 +58,7 @@ function getWeather(lat, lon) {
     let detailApi = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&appid=${key}`;
 
 
-    fetch(currentApi)
+    fetch('data/currentApi.json')
         .then((response) => {
             return response.json();
         })
@@ -85,7 +85,7 @@ function getWeather(lat, lon) {
         })
         .then(() => {
                 displayWeather();
-                hourlyData(detailApi);
+                hourlyData('data/detailApi.json');
             })
 }
 function hourlyData(detailApi) {
