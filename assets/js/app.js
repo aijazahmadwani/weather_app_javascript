@@ -1,6 +1,7 @@
 // SELECT ELEMENTS
 const notificationElement = document.querySelector(".notification");
 const locationElement = document.getElementById("location");
+const districtElement = document.getElementById("district");
 const iconElement = document.getElementById("weather-icon");
 const mainTempElement = document.getElementById("main-temperature");
 const weatherDescElement = document.getElementById("weather-description");
@@ -57,8 +58,7 @@ function getWeather(lat, lon) {
     // console.log(currentApi);
     let detailApi = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&appid=${key}`;
 
-
-    fetch('data/currentApi.json')
+    fetch(currentApi)
         .then((response) => {
             return response.json();
         })
@@ -85,7 +85,7 @@ function getWeather(lat, lon) {
         })
         .then(() => {
                 displayWeather();
-                hourlyData('data/detailApi.json');
+                hourlyData(detailApi);
             })
 }
 function hourlyData(detailApi) {
@@ -108,7 +108,7 @@ function hourlyData(detailApi) {
                 hourlyDataElement.innerHTML += `<div class="col col-md-2 mt-1 mr-1" style="background-color: ${color};">
                         <h5 class="card-title mt-2">${convertTimestamp(data.hourly[i].dt)}</h5>
                         <h3>${Math.floor(data.hourly[i].temp - KELVIN)} °C </h3>
-                        <img src="./icons/${data.hourly[i].weather[0].icon}.png" class="img-fluid" alt="...">
+                        <img src="./assets/animated_icons/${data.hourly[i].weather[0].icon}.svg" class="img-fluid" alt="...">
                         <p class="card-text">${data.hourly[i].weather[0].main}</p>
                     </div>`
 
@@ -119,7 +119,8 @@ function hourlyData(detailApi) {
 }
 // DISPLAY WEATHER TO UI
 function displayWeather() {
-    iconElement.src = `./icons/${weather.iconId}.png`;
+    iconElement.src = `./assets/animated_icons/${weather.iconId}.svg`;
+    districtElement.innerHTML = weather.location;
     mainTempElement.innerHTML = `${weather.temperature}°<span>C</span>`;
     locationElement.innerHTML = weather.location + ', ' + weather.country;
     currentTimeElement.innerHTML += weather.dateTime;

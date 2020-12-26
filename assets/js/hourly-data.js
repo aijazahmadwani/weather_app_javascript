@@ -8,7 +8,7 @@ for (let i = 0; i < 48; i++) {
     <tr>
         <th scope="row">${convertTimestamp(data.hourly[i].dt)}</th>
         <td>${Math.floor(data.hourly[i].temp - KELVIN)} °C </td>
-        <td><img src="./icons/${data.hourly[i].weather[0].icon}.png" width="32px"alt="..."> </img></td>
+        <td><img src="./assets/animated_icons/${data.hourly[i].weather[0].icon}.svg" width="32px"alt="..."> </img></td>
         <td>${data.hourly[i].weather[0].main}</td>
     </tr>`
 }

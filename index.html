@@ -14,7 +14,7 @@
   <!-- chart library -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
   <!-- CUSTOM CSS -->
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
   <title>J&K Weather</title>
 </head>
 
@@ -39,10 +39,6 @@
             <a class="nav-link" href="#">Link</a>
           </li>
         </ul>
-        <form class="d-flex">
-          <input class="form-control mr-2" type="search" placeholder="Search City" aria-label="Search">
-          <button class="btn btn-outline-warning" type="submit">Search</button>
-        </form>
       </div>
     </div>
   </nav>
@@ -63,40 +59,40 @@
             <p id="weather-description">5% chances of rain until 12:55</p>
           </div>
         </div>
-        <div class="col-md-2" style="background-color: #323544;"><img class=" img-fluid" id="weather-icon" src="./icons/unknown.png"
-            alt="Card image" />
-            <h5 id="feels-like"></h5>
-            <p id="sunrise">Sunrise  </p>
-            <p id="sunset">Sunset  </p>
+        <div class="col-md-2" style="background-color: #323544;"><img class=" img-fluid" id="weather-icon"
+            src="./icons/unknown.png" alt="Card image" />
+          <h5 id="feels-like"></h5>
+          <p id="sunrise">Sunrise </p>
+          <p id="sunset">Sunset </p>
         </div>
       </div>
     </div>
 
     <!-- DEATAILED DATA OF CURRENT LOCATION -->
     <div class="row justify-content-center mt-5">
-      <h3 class="text-center">Detailed Weather of Srinagar,Jammu and Kashmir</h3>
+      <h3 class="text-center">Detailed Weather of <span id="district"></span></h3>
       <div class="col-md-4" style="background-color: #1E202B;">
         <div class="row">
           <div class="col-6 mt-2">
-            <img src="./images/temperature.png" width="13" alt=""><span class="ml-3">  Humidity</span>
+            <span class="ml-3"> Humidity</span>
           </div>
           <div class="col-6 mt-2">
             <p id="humidity">34%</p>
           </div>
           <div class="col-6">
-            <img src="./images/wind.png" class="img-fluid" width="24" alt=""><span class="ml-3">Pressure</span> 
+            <span class="ml-3">Pressure</span>
           </div>
           <div class="col-6">
             <p id="pressure">34%</p>
           </div>
           <div class="col-6">
-             <img src="./images/pressure.png" width="24" alt=""> <span class="ml-3">Wind</span> 
+            <span class="ml-3">Wind</span>
           </div>
           <div class="col-6">
             <p id="wind-speed">7 m/s</p>
           </div>
           <div class="col-6">
-            <img src="./images/pressure.png" width="24" alt=""> <span class="ml-3">Wind Direction</span>
+            <span class="ml-3">Wind Direction</span>
           </div>
           <div class="col-6">
             <p id="wind-direction">7 m/s</p>
@@ -105,27 +101,27 @@
       </div>
       <div class="col-md-4" style="background-color: #1E202B;">
         <div class="row">
-         
+
           <div class="col-6 mt-2">
-             <img src="./images/temperature.png" width="13" alt=""> <span class="ml-3"> Visibility</span> 
+            <span class="ml-3"> Visibility</span>
           </div>
           <div class="col-6 mt-2">
             <p id="visibility">34%</p>
           </div>
           <div class="col-6">
-             <img src="./images/temperature.png" width="13" alt=""> <span class="ml-3">Clouds</span>
+            <span class="ml-3">Clouds</span>
           </div>
           <div class="col-6">
             <p id="clouds">34%</p>
           </div>
           <div class="col-6">
-             <img src="./images/temperature.png" width="13" alt=""> <span class="ml-3">Sea Level</span>
+            <span class="ml-3">Sea Level</span>
           </div>
           <div class="col-6">
             <p id="sea-level">34%</p>
           </div>
           <div class="col-6">
-             <img src="./images/temperature.png" width="13" alt=""> <span class="ml-3"> Ground Level</span>
+            <span class="ml-3"> Ground Level</span>
           </div>
           <div class="col-6">
             <p id="ground-level">34%</p>
@@ -141,14 +137,14 @@
       <canvas id="myChart" width="400" height="400"></canvas>
     </div> -->
   </div>
- 
- 
-    
+
+
+
   <!-- Option 1: Bootstrap Bundle with Popper.js -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js"
     integrity="sha384-BOsAfwzjNJHrJ8cZidOg56tcQWfp6y72vEJ8xQ9w6Quywb24iOsW913URv1IS4GD"
     crossorigin="anonymous"></script>
 </body>
-<script src="./app.js"></script>
+<script src="./assets/js/app.js"></script>
 
 </html>
