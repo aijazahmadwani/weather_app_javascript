@@ -76,4 +76,40 @@ body{
 .detail{
   justify-content: left !important;
 }
+.floatLeft{
+  width: 100px;
+}
+}
+
+
+
+
+.contain {
+  width: 80%; 
+  /* height: 30rem;  */
+  border: 1px solid #ffffff;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  margin: 0 auto;
+}
+
+.inner {
+  height: 100%;
+  white-space:nowrap; 
+}
+
+.floatLeft {
+  width: 170px; 
+  margin:10px 10px 10px 10px; 
+  display: inline-block;
+}
+
+.contain::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.contain {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
