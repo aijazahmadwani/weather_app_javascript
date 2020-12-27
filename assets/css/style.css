@@ -76,8 +76,12 @@ body{
 .detail{
   justify-content: left !important;
 }
-.floatLeft{
-  width: 100px;
+.contain{
+  width: 100% !important;
+  padding: 1px !important;
+}
+.floatLeft {
+  margin-left: 1px !important; 
 }
 }
 
@@ -100,7 +104,7 @@ body{
 
 .floatLeft {
   width: 170px; 
-  margin:10px 10px 10px 10px; 
+  margin:0; 
   display: inline-block;
 }
 

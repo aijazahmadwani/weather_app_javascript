@@ -123,7 +123,7 @@ function hourlyData(detailApi) {
                 else{
                     color='#2D303D';
                 }
-                weekDataElement.innerHTML += `<div class="col floatLeft col-sm-4 col-md-2 mt-1 mr-1" style="background-color: ${color};>
+                weekDataElement.innerHTML += `<div class="col floatLeft col-sm-4 col-md-2 mt-1 mr-1 mb-1" style="background-color: ${color};>
                         <p class="card-title mt-2">${convertToDate(data.daily[i].dt)}</p>
                         <h3>${Math.floor(data.daily[i].temp.day - KELVIN)} °C / ${Math.floor(data.daily[i].temp.night - KELVIN)} °C</h3>
                         <img src="./assets/animated_icons/${data.daily[i].weather[0].icon}.svg" width="50%" class="img-fluid" alt="...">
