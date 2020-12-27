@@ -123,7 +123,7 @@ function hourlyData(detailApi) {
                 else{
                     color='#2D303D';
                 }
-                weekDataElement.innerHTML += `<div class="col col-md-1 mt-1 mr-1" style="background-color: ${color};">
+                weekDataElement.innerHTML += `<div class="col col-md-2 mt-1 mr-1" style="background-color: ${color};>
                         <p class="card-title mt-2">${convertToDate(data.daily[i].dt)}</p>
                         <h3>${Math.floor(data.daily[i].temp.day - KELVIN)} °C / ${Math.floor(data.daily[i].temp.night - KELVIN)} °C</h3>
                         <img src="./assets/animated_icons/${data.daily[i].weather[0].icon}.svg" width="50%" class="img-fluid" alt="...">
@@ -221,6 +221,15 @@ function convertToDate(timestamp) {
         min = ('0' + d.getMinutes()).slice(-2),     // Add leading 0.
         ampm = 'AM',
         time;
+        let weekday = new Array(7);
+        weekday[0] = "Sunday";
+        weekday[1] = "Monday";
+        weekday[2] = "Tuesday";
+        weekday[3] = "Wednesday";
+        weekday[4] = "Thursday";
+        weekday[5] = "Friday";
+        weekday[6] = "Saturday";
+        day = weekday[d.getDay()];
 
     if (hh > 12) {
         h = hh - 12;
@@ -233,7 +242,7 @@ function convertToDate(timestamp) {
     }
 
     //time = h + ':' + min + ' ' + ampm + ',' + dd + '-' + mm + '-' + yyyy;
-    date = dd + '-' + mm;
+    date = day + ' '+dd + '-' + mm;
 
     return date;
 }
