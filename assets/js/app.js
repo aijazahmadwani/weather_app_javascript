@@ -29,7 +29,7 @@ weather.unit = "celsius";
 const KELVIN = 273;
 
 // API KEY
-const key = '4e027d2fcccd807da22c4507d2dafed5';
+const key = '';
 
 // CHECK IF BROWSER SUPPORTS GEOLOCATION
 if ('geolocation' in navigator) {
@@ -49,7 +49,7 @@ function setPosition(position) {
 // SHOW ERROR WHEN THERE IS AN ISSUE WITH GEOLOCATION SERVICE
 function showError(error) {
     notificationElement.style.display = "block";
-    notificationElement.innerHTML = `<p> How can i detect your location</p>`;
+    notificationElement.innerHTML = `<p> ${error.message} </p>`;
 }
 
 // GET WEATHER FROM API PROVIDER
@@ -58,7 +58,7 @@ function getWeather(lat, lon) {
     // console.log(currentApi);
     let detailApi = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&appid=${key}`;
 
-    fetch(currentApi)
+    fetch('data/currentApi.json')
         .then((response) => {
             return response.json();
         })
@@ -84,7 +84,7 @@ function getWeather(lat, lon) {
         })
         .then(() => {
                 displayWeather();
-                hourlyData(detailApi);
+                hourlyData('data/detailApi.json');
             })
 }
 function hourlyData(detailApi) {
